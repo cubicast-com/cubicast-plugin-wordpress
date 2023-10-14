@@ -3,8 +3,8 @@
  * @package Cubicast
  * @version 0.1.0
  * Plugin Name: Cubicast
- * Plugin URI: http://wordpress.org/plugins/cubicast/
- * Description: Afforfable session recording
+ * Plugin URI: http://www.cubicast.com/integrations/wordpress/
+ * Description: Use visual feedback to help and understand your users. See through the eyes of your users and identify issues. Discover <strong>who, when, and why</strong>.
  * Author: Cubicast
  * Version: 0.1.0
  * Author URI: https://www.cubicast.com
