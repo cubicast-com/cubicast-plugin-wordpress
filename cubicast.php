@@ -201,6 +201,7 @@ function cubicast_get_workspace_url($workspace_id) {
 
 function cubicast_plugin_settings_page() {
   $key_updated = false;
+  $workspace_id = NULL;
   if (
     isset( $_POST['_wpnonce'] ) 
     && wp_verify_nonce( $_POST['_wpnonce'], 'update_cubicast_settings' ) 
