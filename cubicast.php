@@ -41,9 +41,13 @@ function register_cubicast_plugin_settings() {
   add_option( 'cubicast_user_data', array() );
 }
 
+function cubicast_sync_user_attr($user_setting, $attr) {
+  return is_array($user_setting) && in_array($attr, $user_setting);
+}
+
 function cubicast_sync_wordpress_user() {
   $cubicast_user_data = get_option( 'cubicast_user_data' );
-  $sync_name = in_array( 'name', $cubicast_user_data );
+  $sync_name = cubicast_sync_user_attr( $cubicast_user_data, 'name' );
 
   if (is_user_logged_in()) {
     $current_user = wp_get_current_user();
@@ -60,7 +64,7 @@ function cubicast_sync_wordpress_user() {
       $user_props['email'] = $user_id;
     }
 
-    if ( isset( $current_user->display_name ) && in_array( 'nickname', $cubicast_user_data ) ) {
+    if ( isset( $current_user->display_name ) && cubicast_sync_user_attr( $cubicast_user_data, 'nickname' ) ) {
       $user_props['nickname'] = $current_user->display_name;
     }
   
@@ -92,18 +96,18 @@ function cubicast_sync_wordpress_user() {
       if (
         isset( $customer['phone'] )
         && !empty( $customer['phone'] )
-        && in_array( 'phone', $cubicast_user_data )
+        && cubicast_sync_user_attr( $cubicast_user_data, 'phone' )
       ) {
         $user_props['phone'] = $customer['phone'];
       }
       if (
         isset( $customer['company'] )
         && !empty( $customer['company'] )
-        && in_array( 'company', $cubicast_user_data )
+        && cubicast_sync_user_attr( $cubicast_user_data, 'company' )
       ) {
         $user_props['company'] = $customer['company'];
       }
-      if ( in_array( 'address', $cubicast_user_data ) ) {
+      if ( cubicast_sync_user_attr( $cubicast_user_data, 'address' ) ) {
         $address_lines = array();
         if ( isset( $customer['address'] ) && !empty( $customer['address'] ) ) {
           $address_lines[] = $customer['address'];
@@ -309,7 +313,7 @@ function cubicast_plugin_settings_page() {
             <fieldset>
               <label>
                 <input type="checkbox" name="cubicast_user_data[]" value="name"
-                  <?php if ( in_array( 'name', $cubicast_user_data ) ) echo 'checked' ?>
+                  <?php if ( cubicast_sync_user_attr( $cubicast_user_data, 'name' ) ) echo 'checked' ?>
                 />
                 <span>
                   <?php _e('User First Name and Last Name', 'cubicast'); ?>
@@ -317,7 +321,7 @@ function cubicast_plugin_settings_page() {
               </label><br>
               <label>
                 <input type="checkbox" name="cubicast_user_data[]" value="nickname"
-                  <?php if ( in_array( 'nickname', $cubicast_user_data ) ) echo 'checked' ?>
+                  <?php if ( cubicast_sync_user_attr( $cubicast_user_data, 'nickname' ) ) echo 'checked' ?>
                 />
                 <span>
                   <?php _e('User Nickname', 'cubicast'); ?>
@@ -325,7 +329,7 @@ function cubicast_plugin_settings_page() {
               </label><br>
               <label>
                 <input type="checkbox" name="cubicast_user_data[]" value="phone"
-                  <?php if ( in_array( 'phone', $cubicast_user_data ) ) echo 'checked' ?>
+                  <?php if ( cubicast_sync_user_attr( $cubicast_user_data, 'phone' ) ) echo 'checked' ?>
                 />
                 <span>
                   <?php _e('Customer Phone', 'cubicast'); ?> (WooCommerce)
@@ -333,7 +337,7 @@ function cubicast_plugin_settings_page() {
               </label><br>
               <label>
                 <input type="checkbox" name="cubicast_user_data[]" value="company"
-                  <?php if ( in_array( 'company', $cubicast_user_data ) ) echo 'checked' ?>
+                  <?php if ( cubicast_sync_user_attr( $cubicast_user_data, 'company' ) ) echo 'checked' ?>
                 />
                 <span>
                   <?php _e('Customer Company', 'cubicast'); ?> (WooCommerce)
@@ -341,7 +345,7 @@ function cubicast_plugin_settings_page() {
               </label><br>
               <label>
                 <input type="checkbox" name="cubicast_user_data[]" value="address"
-                  <?php if ( in_array( 'address', $cubicast_user_data ) ) echo 'checked' ?>
+                  <?php if ( cubicast_sync_user_attr( $cubicast_user_data, 'address' ) ) echo 'checked' ?>
                 />
                 <span>
                   <?php _e('Customer Address', 'cubicast'); ?> (WooCommerce)
