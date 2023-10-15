@@ -211,12 +211,12 @@ function cubicast_plugin_settings_page() {
       $key_updated = true;
     }
     if ( isset( $_POST['cubicast_user_data'] ) ) {
-      $cubicast_user_data = array_map( 'sanitize_text_field', $_POST['cubicast_user_data'] );
-      $valid_keys = array( 'name', 'nickname', 'phone', 'address', 'company' );
-      $invalid_keys = array_diff( $cubicast_user_data, $valid_keys );
-      if ( $invalid_keys ) {
-        // remove invalid keys
-        $cubicast_user_data = array_diff( $cubicast_user_data, $invalid_keys );
+      $cubicast_user_data = $_POST['cubicast_user_data'];
+      $valid_values = array( 'name', 'nickname', 'phone', 'address', 'company' );
+      $invalid_values = array_diff( $cubicast_user_data, $valid_values );
+      if ( $invalid_values ) {
+        // remove invalid values
+        $cubicast_user_data = array_diff( $cubicast_user_data, $invalid_values );
       }
     } else {
       $cubicast_user_data = array();
