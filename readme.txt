@@ -14,7 +14,7 @@ See through the eyes of your users and identify issues. Discover who, when, and 
 
 == Description ==
 
-Cubicast is an affordable session recording service with some unique features built-in. Increase productivity for support agents, testers, and web developers. Track JavaScript errors, rage clicks, server performance bottlenecks, pinpoint bugs, and show solutions. **To utilize Cubicast, you need an active subscription plan after your expired 15-day trial period**.
+Cubicast is an affordable session recording service tailored to customer support and engineering teams or individuals. Increase productivity for support agents, testers, and web developers. Track JavaScript errors, rage clicks, server performance bottlenecks, pinpoint bugs, and show solutions. **To utilize Cubicast, you need an active subscription plan after your expired 15-day trial period**.
 
 ### How is your website performing around the globe?
 Keep track of slow resources, including slow-loading pages, API endpoints, scripts, images, and CSS resources with customizable thresholds.
@@ -68,7 +68,7 @@ Out of the box, no. By default, once you set up Cubicast, you are good to go. Yo
 
 = What about GDPR? =
 
-Cubicast is GDPR-ready. Since visitors are identified by their email, you should add Cubicast to your list of sub-processors. If you receive an erasure request, remove the visitor and ensure all PII no longer exists on our side.
+Cubicast is GDPR-ready. Since visitors are identified by their email, you should add Cubicast to your list of sub-processors. If you receive an erasure request, remove the visitor and ensure all PII data no longer exists on our side.
 
 = How do I upgrade to a paid plan? =
 
